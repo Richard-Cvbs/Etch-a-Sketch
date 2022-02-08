@@ -1,0 +1,47 @@
+html,body{
+  height: 100%;
+  margin: 0px;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(128, 128, 128, 0.596);
+    padding: 0px;
+}
+.container{
+    display: flex;
+    flex-grow: 1;
+    background-color: aliceblue;
+}
+.interface{
+    width: 15%;
+    border: 6px red;
+    border-style: double;
+    border-radius: 4px;
+}
+header{
+        height: 10%;
+        font-size: 32px;
+        font-weight: bolder;
+        color: green;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: antiquewhite;
+}
+h1{
+    height: 5%;
+    margin: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blueviolet
+}
+footer{
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: antiquewhite;
+}
