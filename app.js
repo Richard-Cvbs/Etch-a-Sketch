@@ -5,4 +5,13 @@
 - Create grid using JS
 - Add color changing interation on JS
 - Add  Interactivity using JS
-- Add Interface with JS
+- Add Interface with JS*/
+const grid=document.querySelector(".grid")
+function createGrid(){
+    for(let i = 0; i<256; i++)
+    let newGridDiv=document.createElement('div')
+    grid.appendChild(newGridDiv)
+}
+function question(){
+    console.log("sdfs")
+}
