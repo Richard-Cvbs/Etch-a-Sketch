@@ -7,14 +7,17 @@
 - Add  Interactivity using JS
 - Add Interface with JS*/
 const gridContainer = document.querySelector('.grid');
+document.addEventListener('onload', (createBasicGrid()))
 function createBasicGrid(){
     for (let i = 0; i<256; i++){
         let newDiv = document.createElement('div');
-        newDiv.classList.add('grid-item')
+        newDiv.classList.add('grid-item');
         gridContainer.appendChild(newDiv);
-    }
+    };
+    gridListen();
+    resetButtonsListen();
+    newGridListen();
 }
-createBasicGrid();
 function gridListen(){
     let gridItems = document.querySelectorAll('.grid-item')
     gridItems.forEach(Element =>{
@@ -23,38 +26,41 @@ function gridListen(){
         })
     });
 }
-gridListen();
-const resetButton = document.querySelector('.reset')
-function resetGrid(){
-    let gridItems = document.querySelectorAll('.grid-item')
+function resetButtonsListen(){
+    const resetButton = document.querySelector('.reset')
     resetButton.addEventListener('click', e=>{
+    let gridItems = document.querySelectorAll('.grid-item')
             gridItems.forEach(Element=>{
         Element.style.backgroundColor= 'White';
         })
     });
 }
-resetGrid();
-const gridChangeButtons = document.querySelectorAll('.grid-size-button')
-function gridChange(){
+function newGridListen(){
+    const gridChangeButtons = document.querySelectorAll('.grid-size-button')
     gridChangeButtons.forEach(Element =>{
         Element.addEventListener('click', e=>{
             removeGridItems();
+            modifyGridFormat(e.target.value);
             createModifiedGrid(e.target.value);
+            gridListen();
         })
     }
         )
 }
-gridChange()
 function removeGridItems(){
     while (gridContainer.lastElementChild) {
         gridContainer.removeChild(gridContainer.lastElementChild);
     }
 }
+function modifyGridFormat(value){
+    gridContainer.className=`grid grid-${value}x${value}`
+}
 function createModifiedGrid(value){
-    gridContainer.setAttribute('style', `grid-template-columns: repeat(${value}, 1fr);`); 
     let augmentedValue = Math.pow(value, 2);
     for (let i = 0; i<augmentedValue; i++){
         let newDiv = document.createElement('div');
         newDiv.className='grid-item';
         gridContainer.appendChild(newDiv);
     }
+    gridListen();
+}
